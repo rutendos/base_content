@@ -52,11 +52,12 @@
 <li><a class="reference internal" href="#">Install from GitHub</a></li>
 <li><a class="reference internal" href="#requirements">Requirements</a></li>
 <li><a class="reference internal" href="#input-files">Input Files</a></li>
+<li><a class="reference internal" href="#algorithm-overview">Algorithm Overview</a></li>
 <li><a class="reference internal" href="#running-base-content">Running base_content</a><ul>
+<li><a class="reference internal" href="#running-in-the-command-line">Running in the command line</a></li>
 <li><a class="reference internal" href="#running-on-fiji">Running on Fiji</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#algorithm-overview">Algorithm Overview</a></li>
 </ul>
 
   <h4>Previous topic</h4>
@@ -145,15 +146,27 @@ The fasta file should be indexed and also should match the format of the bed fil
 <li>Ensembl/NCBI format (1:start-stop)</li>
 </ul>
 </div>
+<div class="section" id="algorithm-overview">
+<h1>Algorithm Overview<a class="headerlink" href="#algorithm-overview" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="_images/pipeline.svg"><div align="center" class="align-center"><img alt="_images/pipeline.svg" height="500" src="_images/pipeline.svg" width="800" /></div>
+</a>
+</div>
 <div class="section" id="running-base-content">
 <h1>Running base_content<a class="headerlink" href="#running-base-content" title="Permalink to this headline">¶</a></h1>
-<p>To run base_content in the commandline:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">base_content</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">reference</span><span class="o">/</span><span class="n">hg38</span><span class="o">.</span><span class="n">fa</span> <span class="o">-</span><span class="n">b</span> <span class="o">./</span><span class="n">my_bedfile</span><span class="o">.</span><span class="n">bed</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">output</span><span class="o">/</span><span class="nb">dir</span><span class="o">/</span> <span class="o">-</span><span class="n">d</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">intermediate_bed</span><span class="o">.</span><span class="n">bed</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">intermediate_fasta</span><span class="o">.</span><span class="n">fa</span> <span class="o">-</span><span class="n">w</span> <span class="mi">1500</span>
+<div class="section" id="running-in-the-command-line">
+<h2>Running in the command line<a class="headerlink" href="#running-in-the-command-line" title="Permalink to this headline">¶</a></h2>
+<p>To run base_content with TFEA bedfile in the commandline:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">base_content</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">reference</span><span class="o">/</span><span class="n">hg38</span><span class="o">.</span><span class="n">fa</span> <span class="o">-</span><span class="n">b</span> <span class="o">./</span><span class="n">my_bedfile</span><span class="o">.</span><span class="n">bed</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">output</span><span class="o">/</span><span class="nb">dir</span><span class="o">/</span> <span class="o">-</span><span class="n">w</span> <span class="mi">1500</span> <span class="o">-</span><span class="n">s</span> <span class="n">experiment_name</span> <span class="o">-</span><span class="n">t</span>
 </pre></div>
+</div>
+<p>To run base_content with Tfit or other bedfile in the commandline:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">base_content</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">reference</span><span class="o">/</span><span class="n">hg38</span><span class="o">.</span><span class="n">fa</span> <span class="o">-</span><span class="n">b</span> <span class="o">./</span><span class="n">my_bedfile</span><span class="o">.</span><span class="n">bed</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">output</span><span class="o">/</span><span class="nb">dir</span><span class="o">/</span> <span class="o">-</span><span class="n">w</span> <span class="mi">1500</span> <span class="o">-</span><span class="n">s</span> <span class="n">experiment_name</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="running-on-fiji">
 <h2>Running on Fiji<a class="headerlink" href="#running-on-fiji" title="Permalink to this headline">¶</a></h2>
-<p>Since Fiji is still running python 2 the recommendation is to run to a python 3 environment (<a class="reference external" href="https://bficores.colorado.edu/biofrontiers-it/cluster-computing/fiji/creating-and-managing-virtual-environments-with-python3">https://bficores.colorado.edu/biofrontiers-it/cluster-computing/fiji/creating-and-managing-virtual-environments-with-python3</a>):</p>
+<p>Since Fiji is still running python 2 the recommendation is to run a python 3 environment (<a class="reference external" href="https://bficores.colorado.edu/biofrontiers-it/cluster-computing/fiji/creating-and-managing-virtual-environments-with-python3">https://bficores.colorado.edu/biofrontiers-it/cluster-computing/fiji/creating-and-managing-virtual-environments-with-python3</a>):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">module</span> <span class="n">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">my_environment_name</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="o">.</span> <span class="n">my_environment_name</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
@@ -163,12 +176,57 @@ The fasta file should be indexed and also should match the format of the bed fil
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="n">numpy</span>
 </pre></div>
 </div>
+<p>An example sbatch script for a TFEA bed file is shown below.</p>
+<p>..example sbatch:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/bash
+
+###Name the job
+#SBATCH --job-name=Allen2014_ATGC
+
+###Specify the queue
+#SBATCH -p short
+
+###Specify WallTime
+#SBATCH --time=24:00:00
+
+### Specify the number of nodes/cores
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+
+### Allocate the amount of memory needed
+#SBATCH --mem=250gb
+
+### Setting to mail when the job is complete
+#SBATCH --error /scratch/Users/rusi2317/projects/gc_content/e_and_o/%x.err
+#SBATCH --output /scratch/Users/rusi2317/projects/gc_content/e_and_o/%x.out
+
+### Set your email address
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=rutendo.sigauke@ucdenver.edu
+
+module purge
+module load python/3.6.3
+module load python/3.6.3/numpy
+module load python/3.6.3/matplotlib
+module load python/3.6.3/pandas
+module load bedtools/2.25.0
+
+BIN=/scratch/Users/rusi2317/projects/gc_content/bin
+
+OUTDIR=/scratch/Users/rusi2317/projects/gc_content/analysis/Allen2014
+
+GENOME=/scratch/Users/rusi2317/projects/gc_content/genome
+
+BED=/scratch/Users/rusi2317/projects/tfea/output/Allen2014/TFEA_DMSO_1hr-Nutlin_1hr_3/temp_files
+
+NAME=Allen2014
+
+##run the algorithm
+python3 ${BIN}/base_content//base_content -r ${GENOME}/hg19.fa -b ${BED}/ranked_file.center.sorted.bed -o ${OUTDIR}/ -w 1500 -s ${NAME} -t
+</pre></div>
 </div>
+<p>A standard run should take no more than 10 minutes.</p>
 </div>
-<div class="section" id="algorithm-overview">
-<h1>Algorithm Overview<a class="headerlink" href="#algorithm-overview" title="Permalink to this headline">¶</a></h1>
-<a class="reference internal image-reference" href="_images/pipeline.svg"><div align="center" class="align-center"><img alt="_images/pipeline.svg" height="500" src="_images/pipeline.svg" width="800" /></div>
-</a>
 </div>
 
 
