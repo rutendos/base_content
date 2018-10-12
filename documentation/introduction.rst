@@ -72,6 +72,19 @@ To run base_content in the commandline::
 
     python base_content -r /path/to/reference/hg38.fa -b ./my_bedfile.bed -o /output/dir/ -d /path/to/intermediate_bed.bed -f /path/to/intermediate_fasta.fa -w 1500
 
+********************
+Running on Fiji
+********************
+Since Fiji is still running python 2 the recommendation is to run to a python 3 environment (https://bficores.colorado.edu/biofrontiers-it/cluster-computing/fiji/creating-and-managing-virtual-environments-with-python3):
+
+>>> module load python/3.6.3
+>>> python3 -m venv my_environment_name
+>>> . my_environment_name/bin/activate
+
+Once an environment has been set, one can install modules to their environment.
+
+>>> pip install numpy
+
 ###################
 Algorithm Overview
 ###################
