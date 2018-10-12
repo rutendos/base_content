@@ -6,7 +6,6 @@ import os
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-#from abc import ABCMeta, abstractmethod
 
 #----------------------------------------
 # Local imports
@@ -17,33 +16,31 @@ from get_sequences import *
 from counting import *
 from base_plot import *
 
-def run(bedfile, reference, outdir, window=1500, sequence_length=3001):
+def run(bedfile, reference, outdir, sample_name, tfea, window=1500, sequence_length=3001):
 
-    print("--------------Expanding Windows---------------")
-    ##get_windows(bedfile, outbed, int(window))
-    bedwindows = BedWindows(bedfile, outdir, int(window))
-    bedwindows.get_windows()
+    if tfea:
+        print("---------Expanding TFEA bed Windows----------")
+        bedwindows = BedWindows(bedfile, outdir, sample_name, int(window))
+        bedwindows.get_windows()
+    else:
+        print("------------Bed file not from TFEA------------")
+        print("--------------Expanding Windows---------------")
+        bedwindows = BedWindows(bedfile, outdir, sample_name, int(window))
+        bedwindows.get_tfit_windows()
 
     print("-------------Extracting Sequences-------------")    
-    #ExtractSequences(reference, outbed, outfasta)
-    seqs = ExtractSequences(reference, outdir)
+    seqs = ExtractSequences(reference, sample_name, outdir)
     seqs.get_sequences()
     
     print("-----------Counting Base Content-------------")
-    listseq = ListSequences(outdir)
+    listseq = ListSequences(outdir, sample_name)
     window_seq = listseq.list_sequences()
 
-    
-
-    #check how you want the plots made
-    ##counter = CountBases(window_seq, int(sequence_length))
-    ##counted_bases = counter.count_bases()
-
     print("--------------Plot Generation----------------")
-    base_plot(window_seq,"Base Content", outdir, "All",int(sequence_length))
+    base_plot(window_seq,"Base Content", outdir, sample_name, "All",int(sequence_length))
 
     
-
+    ##TO DO: incooporate quartiles...
     #base_plot(window_seq,"Q1 Content", outdir, "Q1", int(sequence_length), q1 = True)
 
     #base_plot(window_seq,"Q4 Content", outdir, "Q4", int(sequence_length), q4 = True)

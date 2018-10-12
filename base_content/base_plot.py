@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 
 from counting import *
 
-def base_plot(seq, plottitle, outdir, whichQ ,sequence_length=3001,q1=False, q4=False, q2_q3=False):
+def base_plot(seq, plottitle, outdir, sample_name, whichQ ,sequence_length=3001,q1=False, q4=False, q2_q3=False):
     '''plot line plot for each bases content across sequences for all/Q1/Q4
     sequences on the same grid.
 
@@ -61,7 +61,7 @@ def base_plot(seq, plottitle, outdir, whichQ ,sequence_length=3001,q1=False, q4=
         seq_q2q3 = seq[int(quantile1):int(quantile3)]
         counts = CountBases(seq_q2q3, int(sequence_length)).count_bases()
     else:
-        counts = CountBases(seq, int(sequence_length)).count_bases()
+        counts = CountBases(seq, outdir,sample_name,int(sequence_length)).count_bases()
 
     ##get positions
     positions = np.arange(-1500,1501,1)
@@ -82,5 +82,5 @@ def base_plot(seq, plottitle, outdir, whichQ ,sequence_length=3001,q1=False, q4=
     plt.yticks(fontsize = 30)
     plt.legend(bbox_to_anchor=(1.05, 1),fontsize = 25, loc=2, borderaxespad=0.)
     plt.suptitle(plottitle, fontsize=60, fontweight='bold')
-    plt.savefig(outdir + 'BaseDistribution_'+str(whichQ)+'.png',bbox_inches='tight')
+    plt.savefig(outdir + sample_name + '_BaseDistribution_'+str(whichQ)+'.png',bbox_inches='tight')
     plt.cla()

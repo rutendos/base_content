@@ -9,9 +9,10 @@ class BedWindows:
 
 
     # Initializer / Instance Attributes
-    def __init__(self, bedfile, outdir, window = 1500):
+    def __init__(self, bedfile, outdir, sample_name, window = 1500):
         self.bedfile = bedfile
         self.outdir = outdir
+        self.sample_name = sample_name
         self.window = window
 
     # instance method
@@ -38,12 +39,6 @@ class BedWindows:
 
         '''
 
-        #bed = pd.read_table(self.bedfile, sep = '\t',header=None,
-        #                       names = ["chr", "start", "stop",
-        #                                "pval","fc","rank","chr_y",
-        #                                "start_y","stop_y","seq",
-        #                                "strand","vals","distance"])
-
         ##takes ranked_file.center.sorted.bed file from TFEA with 6 columns
         bed = pd.read_table(self.bedfile, sep = '\t',header=None,
                                   names = ["chr", "start", "stop",
@@ -66,7 +61,34 @@ class BedWindows:
         ##chr \t start \t stop \t rank_in_TFEA     ##
         #############################################
 
-        #bed_sort.to_csv(self.outbed, sep='\t',
-        bed_sort.to_csv(self.outdir + 'windowed_bed.bed', sep='\t',
+        bed_sort.to_csv(self.outdir + self.sample_name + '_windowed_bed.bed', sep='\t',
                         columns=["chr","start","stop","rank"],
                         header = False, index = False)
+
+    # instance method
+    #def get_windows(bedfile, outbed, window):
+    def get_tfit_windows(self):
+        '''This function takes in bed files from Tfit redefines mu and extends the window
+        '''
+
+        ##takes ranked_file.center.sorted.bed file from TFEA with 6 columns
+        bed = pd.read_table(self.bedfile, sep = '\t',header=None,
+                            names = ["chr", "start", "stop"])
+
+        bed_df = bed
+
+        ##redesignate mu to get new start and stop coordinates
+        bed_df["start_new"] = bed_df.apply(lambda x: round((x["start"] + x["stop"])/2), axis=1)
+
+        bed_df["stop_new"] = bed_df.apply(lambda x: x["start_new"] + 1, axis = 1)
+
+        ##the -1500 position from "origin"
+        bed_df["start"] = bed.apply(lambda x: x["start_new"] - int(self.window), axis=1)
+
+        ##the 1500 position from the "origin"
+        bed_df["stop"] = bed.apply(lambda x: x["stop_new"] + int(self.window), axis=1)
+
+        ##saving the new bedfile
+        bed_df.to_csv(self.outdir + self.sample_name + '_windowed_bed.bed', sep='\t',
+                        columns=["chr","start","stop"],
+                        header = False, index = False)                        

@@ -2,6 +2,7 @@
 #-------------------------------------
 #Outside imports
 #-------------------------------------
+import pandas as pd
 #from abc import ABCMeta, abstractmethod
 
 # Parent class
@@ -10,14 +11,15 @@ class ListSequences:
     '''Get base content for multiple sequences various positions'''
 
     # Initializer / Instance Attributes
-    def __init__(self, outdir, sequence_length=30001):
+    def __init__(self, outdir, sample_name, sequence_length=30001):
         self.outdir = outdir
+        self.sample_name = sample_name
         self.sequence_length = sequence_length
 
     # instance method
     #@abstractmethod
     def list_sequences(self):
-        fasta_sequences = self.outdir+"window_sequences.fa"
+        fasta_sequences = self.outdir + self.sample_name + "_window_sequences.fa"
 
         sequences = []
         sequence_names = []
@@ -38,8 +40,10 @@ class ListSequences:
 #class CountBases(ListSequences):
 class CountBases:
 
-    def __init__(self, sequences, sequence_length=30001):
+    def __init__(self, sequences, outdir, sample_name, sequence_length=30001):
         self.sequences = sequences
+        self.outdir = outdir
+        self.sample_name = sample_name
         self.sequence_length = sequence_length
 
     # instance method
@@ -110,5 +114,12 @@ class CountBases:
         tnew = [x / len(self.sequences) for x in tnew]
         cnew = [x / len(self.sequences) for x in cnew]
         gnew = [x / len(self.sequences) for x in gnew]
+
+        base_df = pd.DataFrame({'A': anew,
+                                'T': tnew,
+                                'G': cnew,
+                                'C': gnew})
+
+        base_df.to_csv(self.outdir + self.sample_name +'_base_content.csv')
 
         return anew, tnew, cnew, gnew, nnew

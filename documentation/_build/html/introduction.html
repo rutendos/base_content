@@ -1,0 +1,181 @@
+
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Install from GitHub &#8212; base_content 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="top" title="base_content 0.1 documentation" href="index.html" />
+    <link rel="prev" title="Welcome to base_content’s documentation!" href="index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to base_content’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">base_content 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Install from GitHub</a></li>
+<li><a class="reference internal" href="#requirements">Requirements</a></li>
+<li><a class="reference internal" href="#input-files">Input Files</a></li>
+<li><a class="reference internal" href="#running-base-content">Running base_content</a></li>
+<li><a class="reference internal" href="#algorithm-overview">Algorithm Overview</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to base_content&#8217;s documentation!</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/introduction.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="install-from-github">
+<h1>Install from GitHub<a class="headerlink" href="#install-from-github" title="Permalink to this headline">¶</a></h1>
+<p>This module can be cloned from the GitHub repo to your local machine.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">rutendos</span><span class="o">/</span><span class="n">base_content</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>Todo: Add to conda and PyPI</p>
+</div>
+<div class="section" id="requirements">
+<h1>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h1>
+<p>Implementation is done in python 3 (Python 3.6.4)</p>
+<p>This tool relies on bedtools (<a class="reference external" href="https://bedtools.readthedocs.io/en/latest/">https://bedtools.readthedocs.io/en/latest/</a>)</p>
+<p>Python modules:</p>
+<ul class="simple">
+<li>argparse (<a class="reference external" href="https://docs.python.org/3/howto/argparse.html">https://docs.python.org/3/howto/argparse.html</a>)</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="n">argparse</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>os (<a class="reference external" href="https://docs.python.org/3/library/os.html">https://docs.python.org/3/library/os.html</a>)</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="n">os</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>pandas (<a class="reference external" href="https://pandas.pydata.org/">https://pandas.pydata.org/</a>)</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>numpy (<a class="reference external" href="http://www.numpy.org/">http://www.numpy.org/</a>)</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="n">numpy</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>matplotlib (<a class="reference external" href="https://matplotlib.org/">https://matplotlib.org/</a>)</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="n">matplotlib</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="input-files">
+<h1>Input Files<a class="headerlink" href="#input-files" title="Permalink to this headline">¶</a></h1>
+<p>The python module takes in a .bed file (ranked_file.center.sorted.bed) from TFEA and plots the base content across positions.</p>
+<a class="reference internal image-reference" href="_images/TFEA_bed_format.png"><img alt="_images/TFEA_bed_format.png" class="align-center" src="_images/TFEA_bed_format.png" style="width: 600px;" /></a>
+<p>The module can also take in Tfit bed files in the format shown below.</p>
+<a class="reference internal image-reference" href="_images/Tfit_bed_file.png"><img alt="_images/Tfit_bed_file.png" class="align-center" src="_images/Tfit_bed_file.png" style="width: 400px;" /></a>
+<p>In addition to a a bed file of coordinates, the base_content requires a fasta file of the reference genome.
+The fasta file should be indexed and also should match the format of the bed file.
+(Make sure that the genome file has been indexed. If a fasta file is indexed it will have a .fai extension.)</p>
+<ul class="simple">
+<li>USCS format (chr1:start-stop)</li>
+<li>Ensembl/NCBI format (1:start-stop)</li>
+</ul>
+</div>
+<div class="section" id="running-base-content">
+<h1>Running base_content<a class="headerlink" href="#running-base-content" title="Permalink to this headline">¶</a></h1>
+<p>To run base_content in the commandline:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">base_content</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">reference</span><span class="o">/</span><span class="n">hg38</span><span class="o">.</span><span class="n">fa</span> <span class="o">-</span><span class="n">b</span> <span class="o">./</span><span class="n">my_bedfile</span><span class="o">.</span><span class="n">bed</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">output</span><span class="o">/</span><span class="nb">dir</span><span class="o">/</span> <span class="o">-</span><span class="n">d</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">intermediate_bed</span><span class="o">.</span><span class="n">bed</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">intermediate_fasta</span><span class="o">.</span><span class="n">fa</span> <span class="o">-</span><span class="n">w</span> <span class="mi">1500</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="algorithm-overview">
+<h1>Algorithm Overview<a class="headerlink" href="#algorithm-overview" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="_images/pipeline.svg"><div align="center" class="align-center"><img alt="_images/pipeline.svg" height="500" src="_images/pipeline.svg" width="800" /></div>
+</a>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to base_content’s documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">base_content 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Rutendo F. Sigauke.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+    </div>
+  </body>
+</html>
