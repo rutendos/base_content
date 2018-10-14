@@ -120,6 +120,8 @@ class CountBases:
                                 'G': cnew,
                                 'C': gnew})
 
-        base_df.to_csv(self.outdir + self.sample_name +'_base_content.csv')
+        #saving tab separared file as a tsv. 
+        #file contains base content per position
+        base_df.to_csv(self.outdir + self.sample_name +'_base_content.tsv', sep='\t')
 
         return anew, tnew, cnew, gnew, nnew
