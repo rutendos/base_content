@@ -81,6 +81,6 @@ def base_plot(seq, plottitle, outdir, sample_name, whichQ ,sequence_length=3001,
     plt.xticks(fontsize = 30)
     plt.yticks(fontsize = 30)
     plt.legend(bbox_to_anchor=(1.05, 1),fontsize = 25, loc=2, borderaxespad=0.)
-    plt.suptitle(plottitle, fontsize=60, fontweight='bold')
+    plt.suptitle(plottitle, fontsize=40, fontweight='bold')
     plt.savefig(outdir + sample_name + '_BaseDistribution_'+str(whichQ)+'.png',bbox_inches='tight')
     plt.cla()

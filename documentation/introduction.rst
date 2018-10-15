@@ -156,4 +156,12 @@ An example sbatch script for a TFEA bed file is shown below.
     ##run the algorithm                               
     python3 ${BIN}/base_content//base_content -r ${GENOME}/hg19.fa -b ${BED}/ranked_file.center.sorted.bed -o ${OUTDIR}/ -w 1500 -s ${NAME} -t
 
-A standard run should take no more than 10 minutes. 
+A standard run should take no more than 5 minutes. 
+
+
+*********************
+Output Files
+*********************
+
+The output contain a figure for the base content in the window specified, as well as a .tsv file with values used to plot the figure.
+In addition, the intermediate window bed and the sequences extracted from the genome are also save in the output folder.
