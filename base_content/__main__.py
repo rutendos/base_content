@@ -13,7 +13,7 @@ parser.add_argument('-w', '--window', dest="window",type=int, default=1500, help
 parser.add_argument('-l', '--seq_len', dest="length_seq", type=int, default=3001, help='width of window around mu.', metavar='INT')
 requiredNamed.add_argument('-s', '--sample_name', dest="sample", help = 'name of the sample to be run', metavar="STR", required=True)
 parser.add_argument('-t', '--is_tfea', dest="tfea", 
-                    help='Boolean operaror to indicate whether the bed file is from TFEA or Tfit', 
+                    help='Boolean operaror to indicate whether the bed file is from TFEA or Tfit (-t means bed file is from TFEA)', 
                     action='store_true')
 
 args = parser.parse_args()
