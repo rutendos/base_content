@@ -8,10 +8,10 @@ requiredNamed.add_argument('-r', '--reference', dest="ref", help = 'reference ge
 #parser.add_argument('-r', '--reference', dest="ref", help = 'reference genome in fasta format', metavar="FILE", required=True)
 requiredNamed.add_argument('-b', '--inbedfile', dest="inbed", help = 'input bed file from TFEA or Tfit', metavar="FILE", required=True)
 #parser.add_argument('-b', '--inbedfile', dest="inbed", help = 'input bed file from TFEA or Tfit', metavar="FILE", required=True)
-parser.add_argument('-o', '--outdirectory', dest="outdir", help = 'directory for output', metavar="DIR", required=True)
+requiredNamed.add_argument('-o', '--outdirectory', dest="outdir", help = 'directory for output', metavar="DIR", required=True)
 parser.add_argument('-w', '--window', dest="window",type=int, default=1500, help = 'window to extract sequences from', metavar="INT")
 parser.add_argument('-l', '--seq_len', dest="length_seq", type=int, default=3001, help='width of window around mu.', metavar='INT')
-parser.add_argument('-s', '--sample_name', dest="sample", help = 'name of the sample to be run', metavar="STR", required=True)
+requiredNamed.add_argument('-s', '--sample_name', dest="sample", help = 'name of the sample to be run', metavar="STR", required=True)
 parser.add_argument('-t', '--is_tfea', dest="tfea", 
                     help='Boolean operaror to indicate whether the bed file is from TFEA or Tfit', 
                     action='store_true')
