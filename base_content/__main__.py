@@ -3,8 +3,11 @@ import main
 
 parser = argparse.ArgumentParser(description = 'Calculating base content per position over a window.')
 
-parser.add_argument('-r', '--reference', dest="ref", help = 'reference genome in fasta format', metavar="FILE", required=True)
-parser.add_argument('-b', '--inbedfile', dest="inbed", help = 'input bed file from TFEA or Tfit', metavar="FILE", required=True)
+requiredNamed = parser.add_argument_group('required named arguments')
+requiredNamed.add_argument('-r', '--reference', dest="ref", help = 'reference genome in fasta format', metavar="FILE", required=True)
+#parser.add_argument('-r', '--reference', dest="ref", help = 'reference genome in fasta format', metavar="FILE", required=True)
+requiredNamed.add_argument('-b', '--inbedfile', dest="inbed", help = 'input bed file from TFEA or Tfit', metavar="FILE", required=True)
+#parser.add_argument('-b', '--inbedfile', dest="inbed", help = 'input bed file from TFEA or Tfit', metavar="FILE", required=True)
 parser.add_argument('-o', '--outdirectory', dest="outdir", help = 'directory for output', metavar="DIR", required=True)
 parser.add_argument('-w', '--window', dest="window",type=int, default=1500, help = 'window to extract sequences from', metavar="INT")
 parser.add_argument('-l', '--seq_len', dest="length_seq", type=int, default=3001, help='width of window around mu.', metavar='INT')
