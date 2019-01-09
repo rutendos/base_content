@@ -77,6 +77,10 @@ class BedWindows:
 
         bed_df = bed
 
+        #bed_int["range"] = bed_int["stop"] - bed_int["start"]
+
+        #bed_df = bed_int.loc[bed_int["range"] >= 500]
+
         ##redesignate mu to get new start and stop coordinates
         bed_df["start_new"] = bed_df.apply(lambda x: round((x["start"] + x["stop"])/2), axis=1)
 

@@ -11,7 +11,7 @@ class ListSequences:
     '''Get base content for multiple sequences various positions'''
 
     # Initializer / Instance Attributes
-    def __init__(self, outdir, sample_name, sequence_length=30001):
+    def __init__(self, outdir, sample_name, sequence_length=3001):
         self.outdir = outdir
         self.sample_name = sample_name
         self.sequence_length = sequence_length
