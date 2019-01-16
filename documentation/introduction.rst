@@ -85,11 +85,11 @@ Running in the command line
 
 To run base_content with TFEA bedfile in the commandline::
 
-    python base_content -r /path/to/reference/hg38.fa -b ./my_bedfile.bed -o /output/dir/ -w 1500 -s experiment_name -t
+    python base_content -r /path/to/reference/hg38.fa -b ./my_bedfile.bed -o /output/dir/ -w 1500 -l 3001 -s experiment_name -t
 
 To run base_content with Tfit or other bedfile in the commandline::
 
-    python base_content -r /path/to/reference/hg38.fa -b ./my_bedfile.bed -o /output/dir/ -w 1500 -s experiment_name
+    python base_content -r /path/to/reference/hg38.fa -b ./my_bedfile.bed -o /output/dir/ -w 1500 -l 3001 -s experiment_name
 
 
 ********************
@@ -110,31 +110,31 @@ An example sbatch script for a TFEA bed file is shown below.
 
 ..example sbatch::
 
-    #!/bin/bash                                                                                                                                                                                                                                                     
+    #!/bin/bash                                                                                                                                                    
 
-    ###Name the job                                                                                                                                                                                                                                                 
-    #SBATCH --job-name=Allen2014_ATGC                                                                                                                                                                                                                               
+    ###Name the job                                                                                                                                      
+    #SBATCH --job-name=Allen2014_ATGC  
 
-    ###Specify the queue                                                                                                                                                                                                                                            
-    #SBATCH -p short                                                                                                                                                                                                                                                
+    ###Specify the queue                                                                         
+    #SBATCH -p short                                                                                                                                               
 
-    ###Specify WallTime                                                                                                                                                                                                                                             
-    #SBATCH --time=24:00:00                                                                                                                                                                                                                                         
+    ###Specify WallTime                                                                          
+    #SBATCH --time=2:00:00                                                                                                                                        
 
-    ### Specify the number of nodes/cores                                                                                                                                                                                                                           
-    #SBATCH --nodes=1                                                                                                                                                                                                                                               
-    #SBATCH --ntasks=1                                                                                                                                                                                                                                              
+    ### Specify the number of nodes/cores                                                        
+    #SBATCH --nodes=1                                                                                                                                              
+    #SBATCH --ntasks=1                                                                                                                                  
 
-    ### Allocate the amount of memory needed                                                                                                                                                                                                                        
-    #SBATCH --mem=250gb                                                                                                                                                                                                                                             
+    ### Allocate the amount of memory needed                                                                                                                      
+    #SBATCH --mem=250gb                                                                                                                                            
 
-    ### Setting to mail when the job is complete                                                                                                                                                                                                                    
-    #SBATCH --error /scratch/Users/rusi2317/projects/gc_content/e_and_o/%x.err                                                                                                                                                                                      
-    #SBATCH --output /scratch/Users/rusi2317/projects/gc_content/e_and_o/%x.out                                                                                                                                                                                     
+    ### Setting to mail when the job is complete                           
+    #SBATCH --error /scratch/Users/rusi2317/projects/gc_content/e_and_o/%x.err                                                                         
+    #SBATCH --output /scratch/Users/rusi2317/projects/gc_content/e_and_o/%x.out                                                                        
 
-    ### Set your email address                                                                                                                                                                                                                                      
-    #SBATCH --mail-type=ALL                                                                                                                                                                                                                                         
-    #SBATCH --mail-user=rutendo.sigauke@ucdenver.edu                                                                                                                                                                                                                
+    ### Set your email address                                                                                                                                     
+    #SBATCH --mail-type=ALL                                                                                                                                        
+    #SBATCH --mail-user=rutendo.sigauke@ucdenver.edu  
 
     module purge
     module load python/3.6.3
@@ -145,16 +145,17 @@ An example sbatch script for a TFEA bed file is shown below.
 
     BIN=/scratch/Users/rusi2317/projects/gc_content/bin
 
-    OUTDIR=/scratch/Users/rusi2317/projects/gc_content/analysis/Allen2014
+    OUTDIR=/scratch/Users/rusi2317/projects/gc_content/analysis/Allen2014_v2
 
     GENOME=/scratch/Users/rusi2317/projects/gc_content/genome
 
     BED=/scratch/Users/rusi2317/projects/tfea/output/Allen2014/TFEA_DMSO_1hr-Nutlin_1hr_3/temp_files
 
-    NAME=Allen2014
+    NAME=Allen2014_width1000
 
-    ##run the algorithm                               
-    python3 ${BIN}/base_content//base_content -r ${GENOME}/hg19.fa -b ${BED}/ranked_file.center.sorted.bed -o ${OUTDIR}/ -w 1500 -s ${NAME} -t
+    ##run the base_content
+
+    python3 ${BIN}/base_content//base_content -r ${GENOME}/hg19.fa -b ${BED}/ranked_file.center.sorted.bed -o ${OUTDIR}/ -l 2001 -w 1000 -s ${NAME} -t
 
 A standard run should take no more than 5 minutes. 
 
