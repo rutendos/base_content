@@ -11,7 +11,7 @@ class ListSequences:
     '''Get base content for multiple sequences various positions'''
 
     # Initializer / Instance Attributes
-    def __init__(self, outdir, sample_name, sequence_length=3001):
+    def __init__(self, outdir, sample_name, sequence_length=None):
         self.outdir = outdir
         self.sample_name = sample_name
         self.sequence_length = sequence_length
@@ -40,7 +40,7 @@ class ListSequences:
 #class CountBases(ListSequences):
 class CountBases:
 
-    def __init__(self, sequences, outdir, sample_name, sequence_length=30001):
+    def __init__(self, sequences, outdir, sample_name, sequence_length=None):
         self.sequences = sequences
         self.outdir = outdir
         self.sample_name = sample_name
@@ -120,8 +120,6 @@ class CountBases:
                                 'G': cnew,
                                 'C': gnew})
 
-        #saving tab separared file as a tsv. 
-        #file contains base content per position
         base_df.to_csv(self.outdir + self.sample_name +'_base_content.tsv', sep='\t')
 
         return anew, tnew, cnew, gnew, nnew
