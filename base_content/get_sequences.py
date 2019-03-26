@@ -15,4 +15,4 @@ class ExtractSequences:
     # instance method
     def get_sequences(self):
 
-        os.system("bedtools getfasta -fi " + self.reference + " -bed " + self.outdir + self.sample_name + "_window.bed" + " -fo " + self.outdir + self.sample_name + "_window_sequences.fa")#self.outfasta)
+        os.system("bedtools getfasta -fi " + self.reference + " -bed " + self.outdir + self.sample_name + "_window.bed" + " -fo " + self.outdir + self.sample_name + "_window_sequences.fa")

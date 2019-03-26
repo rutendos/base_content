@@ -68,31 +68,26 @@ class BedWindows:
 
     
     def get_tfit_windows(self):
-        '''This function takes in bed files from Tfit redefines mu and extends the window
+        '''This function takes in bed files from Tfit and  redefines mu and extends the window
         '''
 
-        ##takes ranked_file.center.sorted.bed file from TFEA with 6 columns
-        bed = pd.read_table(self.bedfile, sep = '\t',header=None,
-                            names = ["chr", "start", "stop"])
+        ##takes in Tfit regions/calls or any other bed file with chr, start, stop columns 
+        bed = pd.read_table(self.bedfile, sep = '\t',header=None,comment='#')
 
-        bed_df = bed
+        ##select the coordinate colmuns only    
+        bed_df = bed.loc[:, 0:2]
+        bed_df.columns = ["chr", "start", "stop"]
 
-        ##filter shorter regions
-        #bed_int['range'] = bed_int.apply(lambda x: x['stop'] - x['start'], axis = 1)
-        #bed_int['range'] = bed_int['stop'].astype(int) - bed_int['start'].astype(int)
-
-        #bed_df = bed_int.loc[bed_int['range'] >= 1000]
-
-        ##redesignate mu to get new start and stop coordinates
+        ##redefine mu to get new start and stop coordinates
         bed_df["start_new"] = bed_df.apply(lambda x: round((x["start"] + x["stop"])/2), axis=1)
 
         bed_df["stop_new"] = bed_df.apply(lambda x: x["start_new"] + 1, axis = 1)
 
         ##the -1500 position from "origin"
-        bed_df["start"] = bed.apply(lambda x: x["start_new"] - int(self.window), axis=1)
+        bed_df["start"] = bed_df.apply(lambda x: x["start_new"] - int(self.window), axis=1)
 
         ##the 1500 position from the "origin"
-        bed_df["stop"] = bed.apply(lambda x: x["stop_new"] + int(self.window), axis=1)
+        bed_df["stop"] = bed_df.apply(lambda x: x["stop_new"] + int(self.window), axis=1)
 
         ##saving the new bedfile
         bed_df.to_csv(self.outdir + self.sample_name + '_window.bed', sep='\t',

@@ -12,7 +12,7 @@ Todo: Add to conda and PyPI
 Requirements
 ##############
 
-Implementation is done in python 3 (Python 3.6.4)
+Implementation is done in python 3 (Python 3.6.3)
 
 This tool relies on bedtools (https://bedtools.readthedocs.io/en/latest/)
 
@@ -85,11 +85,11 @@ Running in the command line
 
 To run base_content with TFEA bedfile in the commandline::
 
-    python base_content -r /path/to/reference/hg38.fa -b ./my_bedfile.bed -o /output/dir/ -w 1500 -l 3001 -s experiment_name -t
+    python base_content -r /path/to/reference/hg38.fa -b ./my_bedfile.bed -o /output/dir/ -w 1500 -s experiment_name -t
 
 To run base_content with Tfit or other bedfile in the commandline::
 
-    python base_content -r /path/to/reference/hg38.fa -b ./my_bedfile.bed -o /output/dir/ -w 1500 -l 3001 -s experiment_name
+    python base_content -r /path/to/reference/hg38.fa -b ./my_bedfile.bed -o /output/dir/ -w 1500 -s experiment_name
 
 
 ********************
@@ -101,7 +101,7 @@ Since Fiji is still running python 2 the recommendation is to run a python 3 env
 >>> python3 -m venv my_environment_name
 >>> . my_environment_name/bin/activate
 
-Once an environment has been set, one can install modules to their environment.
+Once an environment has been set, install modules to the environment.
 
 >>> pip install numpy
 
@@ -119,14 +119,14 @@ An example sbatch script for a TFEA bed file is shown below.
     #SBATCH -p short                                                                                                                                               
 
     ###Specify WallTime                                                                          
-    #SBATCH --time=2:00:00                                                                                                                                        
+    #SBATCH --time=0:20:00                                                                                                                                        
 
     ### Specify the number of nodes/cores                                                        
     #SBATCH --nodes=1                                                                                                                                              
     #SBATCH --ntasks=1                                                                                                                                  
 
     ### Allocate the amount of memory needed                                                                                                                      
-    #SBATCH --mem=250gb                                                                                                                                            
+    #SBATCH --mem=2gb                                                                                                                                            
 
     ### Setting to mail when the job is complete                           
     #SBATCH --error /scratch/Users/rusi2317/projects/gc_content/e_and_o/%x.err                                                                         
@@ -155,14 +155,34 @@ An example sbatch script for a TFEA bed file is shown below.
 
     ##run the base_content
 
-    python3 ${BIN}/base_content//base_content -r ${GENOME}/hg19.fa -b ${BED}/ranked_file.center.sorted.bed -o ${OUTDIR}/ -l 2001 -w 1000 -s ${NAME} -t
+    python3 ${BIN}/base_content//base_content -r ${GENOME}/hg19.fa -b ${BED}/ranked_file.center.sorted.bed -o ${OUTDIR}/ -w 1000 -s ${NAME} -t
 
-A standard run should take no more than 5 minutes. 
+
+A bedfile with about 6000 regions should take no more than 5 minutes on fiji. 
 
 
 *********************
 Output Files
 *********************
 
-The output contain a figure for the base content in the window specified, as well as a .tsv file with values used to plot the figure.
-In addition, the intermediate window bed and the sequences extracted from the genome are also save in the output folder.
+The output folder contains figures for the base content in the window specified, 
+
+.. image:: figs/SRX322989.tfit_greater_150bp.bed_BaseDistribution_All.png
+   :width: 500
+   :height: 500
+   :align:   center
+
+.. image:: figs/SRX322989.tfit_greater_150bp.bed_SmoothedBaseDistribution_All.png
+   :width: 500
+   :height: 500
+   :align:   center
+
+as well as a .tsv file with values used to plot the figure.   
+
+.. image:: figs/example_outfile.png
+   :width: 500
+   :height: 200
+   :align:   center
+
+
+In addition, the intermediate window bed and the sequences extracted from the genome are also saved in the output folder.
