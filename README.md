@@ -29,7 +29,7 @@ module load bedtools/2.25.0
 
 ### Running in the command line
 ```sh
-python base_content -r /path/to/reference/hg38.fa -b ./my_bedfile.bed -o /output/dir/ -w 1500 -s experiment_name
+python3 base_content -r /path/to/reference/hg38.fa -b ./my_bedfile.bed -o /output/dir/ -w 1500 -s experiment_name
 
 ```
 
