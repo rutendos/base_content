@@ -14,11 +14,17 @@ Takes in a bedfile of coordinates and returns per position base composition.
 pip3 install scipy --user (the other modules are installed on fiji)
 
 ### Loading on fiji
+
 module load bedtools
+
 module load python/3.6.3
+
 module load python/3.6.3/numpy
+
 module load python/3.6.3/matplotlib
+
 module load python/3.6.3/pandas
+
 module load bedtools/2.25.0
 
 ### Running in the command line
