@@ -22,11 +22,6 @@ Python modules:
 
 >>> pip install argparse
 
-
-* os (https://docs.python.org/3/library/os.html)
-
->>> pip install os
-
 * pandas (https://pandas.pydata.org/)
 
 >>> pip install pandas
@@ -68,12 +63,10 @@ The fasta file should be indexed and also should match the format of the bed fil
 Algorithm Overview
 ###################
 
-
 .. image:: figs/pipeline.svg
    :width: 800
    :height: 500
    :align:   center
-
 
 ######################
 Running base_content
@@ -95,15 +88,13 @@ To run base_content with Tfit or other bedfile in the commandline::
 ********************
 Running on Fiji
 ********************
-Since Fiji is still running python 2 the recommendation is to run a python 3 environment (https://bficores.colorado.edu/biofrontiers-it/cluster-computing/fiji/creating-and-managing-virtual-environments-with-python3):
+Since Fiji is still running python 2 the recommendation is to load a python 3 environment 
 
 >>> module load python/3.6.3
->>> python3 -m venv my_environment_name
->>> . my_environment_name/bin/activate
 
 Once an environment has been set, install modules to the environment.
 
->>> pip install numpy
+>>> pip3 install numpy pandas matplotlib --user
 
 
 An example sbatch script for a TFEA bed file is shown below.
@@ -155,7 +146,7 @@ An example sbatch script for a TFEA bed file is shown below.
 
     ##run the base_content
 
-    python3 ${BIN}/base_content//base_content -r ${GENOME}/hg19.fa -b ${BED}/ranked_file.center.sorted.bed -o ${OUTDIR}/ -w 1000 -s ${NAME} -t
+    python3 ${BIN}/base_content//base_content -r ${GENOME}/hg19.fa -b ${BED}/ranked_file.center.sorted.bed -o ${OUTDIR}/ -w 1000 -s ${NAME} 
 
 
 A bedfile with about 6000 regions should take no more than 5 minutes on fiji. 

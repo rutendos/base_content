@@ -72,7 +72,7 @@ class BedWindows:
         '''
 
         ##takes in Tfit regions/calls or any other bed file with chr, start, stop columns 
-        bed = pd.read_csv(self.bedfile, sep = '\t',header=None,comment='#')
+        bed = pd.read_table(self.bedfile, sep = '\t',header=None,comment='#')
 
         ##select the coordinate colmuns only    
         bed_df = bed.loc[:, 0:2]

@@ -102,6 +102,7 @@ def base_plot(seq, plottitle, outdir, sample_name, whichQ, window=None,q1=False,
     gs1 = plt.GridSpec(1, 1)
     ax1 = plt.subplot(gs1[0])
 
+
     ax1.plot(positions,a1,color='blue', alpha=0.75, label='A')
     ax1.plot(positions,t1,color='purple', alpha=0.75, label='T')
     ax1.plot(positions,c1,color='orange', alpha=0.75, label = 'C')
